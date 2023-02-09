@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Email Bot</title>
+    <link rel="stylesheet" href="./static/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap">
+    <link rel="stylesheet" href="./static/assets/css/Contact-Details-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
+</head>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
+        <div class="container"><a class="navbar-brand logo" href="#">Email Bot</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="page lanidng-page">
+        <section class="portfolio-block block-intro">
+            <div class="container">
+                <div class="about-me fs-4 text-dark"></div>
+            </div>
+            <section class="position-relative py-4 py-xl-2">
+                <div class="container position-relative">
+                    <div class="row mb-5">
+                        <div class="col-md-8 col-xl-6 text-center mx-auto">
+                            <div class="avatar" style="background-image: url(&quot;https://pbs.twimg.com/profile_images/720546422475522048/yjwtNkdi_400x400.jpg&quot;);"></div>
+                            <h2>Alumni Association NIT Raipur</h2>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-6 col-lg-4 col-xl-4">
+                            <div class="d-flex flex-column justify-content-center align-items-start h-100 text-center">
+                                <p>Email Bot</p>
+                                <ul style="text-align:left;">
+                                    <li>Only accept CSV files</li>
+                                    <li>Upload csv file with columns "Name" and "Email".</li>
+                                    <li>You can send upto 500 mails at once.</li>
+                                </ul>
+                                {% if message!="" %}
+                                    <div class="alert alert-success " role="alert">{{message}}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-5 col-xl-4">
+                            <div>
+                                <form class="p-3 p-xl-4" method="POST" action='/submit' enctype="multipart/form-data">
+                                    <section class="portfolio-block block-intro">
+                                        <div class="container">
+                                            <div class="about-me fs-4 text-dark"></div>
+                                        </div>
+                                        <div class="container">
+                                            <div class="row">
+                                                
+                                                <div class="col-md-12">Starting point<input class="form-control my-3" type="number" min=0 name="start-point" required></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12"><input class="form-control my-3" type="file" name="inpfile" accept=".csv" required></div>
+                                            </div>
+                                            
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6">
+                                                    
+                                                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-1" name="recievertype" value="registered" required><label class="form-check-label" for="registered" >Registered</label></div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-2" name="recievertype" value="not-registered" required><label class="form-check-label" for="not-registered">Unregistered</label></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <div class="mb-3"></div>
+                                    <div class="mb-3"></div>
+                                    <div class="mb-3"></div>
+                                    <div><button class="btn btn-primary d-block w-100" type="submit">Send</button></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+    <script src="./static/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
+    <script src="./static/assets/js/theme.js"></script>
+    
+</body>
+
+</html>
