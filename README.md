@@ -20,6 +20,6 @@
 ```python app.py```
 
 
-
+![Email bot API](https://github.com/BhavinRaichura/Email-Bot/blob/main/static/Screenshot%20from%202023-02-15%2019-53-38.png?raw=true)
 
 
